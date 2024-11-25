@@ -15,9 +15,9 @@ const client = generateClient<Schema>();
 
 export default function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-    
-  const { signOut } = useAuthenticator();
 
+  const { user, signOut } = useAuthenticator();
+    
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
   }
@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>My todos</h1>
+      <h1>{user?.signInDetails?.loginId}'s todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
