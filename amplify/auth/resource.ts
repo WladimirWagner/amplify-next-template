@@ -8,4 +8,9 @@ export const auth = defineAuth({
   loginWith: {
     email: true,
   },
+  userAttributes: {
+    // Optional: Definiere zusätzliche Benutzerattribute
+  },
+  // Definiere die Cognito-Gruppen
+  groups: ['Admin', 'Member'],
 });
